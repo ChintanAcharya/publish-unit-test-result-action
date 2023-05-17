@@ -58,6 +58,7 @@ class Settings:
     comment_title: str
     comment_mode: str
     job_summary: bool
+    check_run: bool
     compare_earlier: bool
     pull_request_build: str
     test_changes_limit: int
@@ -206,7 +207,7 @@ class Publisher:
                 before_commit_sha = self._settings.event.get('before')
                 logger.debug(f'comparing against before={before_commit_sha}')
                 before_check_run = self.get_check_run(before_commit_sha)
-        else:
+        elif self._settings.check_run:
             check_run, before_check_run = self.publish_check(stats, cases, conclusion)
 
         if self._settings.job_summary:

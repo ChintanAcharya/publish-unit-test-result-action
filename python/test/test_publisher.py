@@ -79,6 +79,7 @@ class TestPublisher(unittest.TestCase):
     @staticmethod
     def create_settings(comment_mode=comment_mode_always,
                         job_summary=True,
+                        check_run=True,
                         compare_earlier=True,
                         report_individual_runs=False,
                         dedup_classes_by_file_name=False,
@@ -122,6 +123,7 @@ class TestPublisher(unittest.TestCase):
             comment_title='Comment Title',
             comment_mode=comment_mode,
             job_summary=job_summary,
+            check_run=check_run,
             compare_earlier=compare_earlier,
             pull_request_build=pull_request_build,
             test_changes_limit=test_changes_limit,

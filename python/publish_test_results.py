@@ -411,6 +411,7 @@ def get_settings(options: dict, gha: GithubAction) -> Settings:
 
     repo = get_var('GITHUB_REPOSITORY', options)
     job_summary = get_bool_var('JOB_SUMMARY', options, default=True)
+    check_run = get_bool_var('CHECK_RUN', options, default=True)
     comment_mode = get_var('COMMENT_MODE', options) or comment_mode_always
 
     # we cannot create a check run or pull request comment when running on pull_request event from a fork
@@ -485,6 +486,7 @@ def get_settings(options: dict, gha: GithubAction) -> Settings:
         comment_title=get_var('COMMENT_TITLE', options) or check_name,
         comment_mode=comment_mode,
         job_summary=job_summary,
+        check_run=check_run,
         compare_earlier=get_bool_var('COMPARE_TO_EARLIER_COMMIT', options, default=True),
         pull_request_build=get_var('PULL_REQUEST_BUILD', options) or 'merge',
         test_changes_limit=int(test_changes_limit),
